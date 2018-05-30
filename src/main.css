@@ -27,6 +27,10 @@ input {
   text-align: center;
 }
 
+.meme-header, .meme-footer {
+  font-size: 40px;
+}
+
 .meme-header {
   z-index: 1;
 }
