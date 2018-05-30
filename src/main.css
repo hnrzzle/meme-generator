@@ -2,3 +2,42 @@ body {
   color: cornflowerblue;
   font-family: sans-serif;
 }
+
+.image-container {
+  position: relative;
+}
+
+.image-container * {
+  margin: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.meme-header {
+  z-index: 1;
+}
+
+.meme-footer {
+  z-index: 2;
+  text-align: left;
+  top: 20px;
+}
+
+.impact {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.arial {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.bowlby {
+  font-family: 'Bowlby One SC', cursive; 
+}
+
+.roboto {
+  font-family: 'Roboto Slab', serif;
+}

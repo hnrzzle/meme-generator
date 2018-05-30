@@ -2,21 +2,25 @@ import React, { Component } from 'react';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 
+const fonts = ['impact', 'arial', 'bowlby', 'roboto'];
+
 export default class App extends Component {
 
   constructor() {
     super();
 
     this.state = {
-      title: 'Insert Headline Here',
+      header: 'Insert Headline Here',
       footer: 'Insert Footer Here',
       image: 'https://imgflip.com/s/meme/One-Does-Not-Simply.jpg',
-      color: '#ffffff'
+      color: '#ffffff',
+      fonts,
+      selected: 'impact'
     };
   }
 
-  handleTitleChange({ target }) {
-    this.setState({ title: target.value });
+  handleHeaderChange({ target }) {
+    this.setState({ header: target.value });
 
   }
 
@@ -44,8 +48,12 @@ export default class App extends Component {
     });
   }
 
+  handleFontChange({ target }) {
+    this.setState({ selected: target.value });
+  }
+
   render() {
-    const { title, image, footer, color } = this.state;
+    const { header, image, footer, color, fonts, selected } = this.state;
 
     return (
       <main>
@@ -55,15 +63,15 @@ export default class App extends Component {
             <label>
               Header:
               <input
-                value={title}
-                onChange={event => this.handleTitleChange(event)}
+                value={header}
+                onChange={event => this.handleHeaderChange(event)}
               />
             </label>
             <label>
               Footer:
               <input
                 value={footer}
-                onChange={event => this.handleTitleChange(event)}
+                onChange={event => this.handleHeaderChange(event)}
               />
             </label>
             <label>
@@ -73,6 +81,12 @@ export default class App extends Component {
                 value={color}
                 onChange={event => this.handleColorChange(event)}
               />
+            </label>
+            <label>
+              Meme Font:
+              <select value={selected} onChange={event => this.handleFontChange(event)}>
+                {fonts.map(font => <option key={font}>{font}</option>)}
+              </select>
             </label>
           </div>
         </fieldset>
@@ -92,15 +106,23 @@ export default class App extends Component {
               />
             </label>
           </div>
-          <div className="image-container"
-            ref={node => this.imageExport = node}
-          >
-            <img src={image}/>
-          </div>
           <div>
             <button onClick={() => this.handleExport()}>
               Save This Meme
             </button>
+          </div>
+          <div
+            className="image-container"
+            ref={node => this.imageExport = node}
+          >
+            <div 
+              className={ selected }
+              style={{ color }}
+            >
+              <h1 className="meme-header">{header}</h1>
+              {/* <h1 className="meme-footer">{footer}</h1> */}
+            </div>
+            <img src={image}/>
           </div>
         </section>
       </main>
