@@ -59,7 +59,7 @@ export default class App extends Component {
       <main>
         <h1>Meme Generator</h1>
         <fieldset>
-          <div>
+          <div className="options">
             <label>
               Header:
               <input
@@ -122,7 +122,7 @@ export default class App extends Component {
               <h1 className="meme-header">{header}</h1>
               {/* <h1 className="meme-footer">{footer}</h1> */}
             </div>
-            <img src={image}/>
+            <img className="meme-img" src={image}/>
           </div>
         </section>
       </main>

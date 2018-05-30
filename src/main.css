@@ -3,12 +3,17 @@ body {
   font-family: sans-serif;
 }
 
+.options {
+  display: flex;
+  justify-content: space-around;
+}
+
 .image-container {
   position: relative;
 }
 
 .image-container * {
-  margin: 25px;
+  margin: 20px auto;
   position: absolute;
   top: 0;
   left: 0;
@@ -26,6 +31,7 @@ body {
   top: 20px;
 }
 
+
 .impact {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
@@ -41,3 +47,4 @@ body {
 .roboto {
   font-family: 'Roboto Slab', serif;
 }
+
