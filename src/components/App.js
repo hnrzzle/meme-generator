@@ -9,7 +9,8 @@ export default class App extends Component {
 
     this.state = {
       title: 'Insert Headline Here',
-      image: null
+      footer: 'Insert Footer Here',
+      image: 'https://imgflip.com/s/meme/One-Does-Not-Simply.jpg'
     };
   }
 
@@ -18,8 +19,12 @@ export default class App extends Component {
 
   }
 
+  handleImageSrc({ target }) {
+    this.setState({ image: target.value });
+  }
+
   render() {
-    const { title, image } = this.state;
+    const { title, image, footer } = this.state;
 
     return (
       <main>
@@ -27,18 +32,32 @@ export default class App extends Component {
         <fieldset>
           <div>
             <label>
-              Text:
+              Header:
               <input
                 value={title}
                 onChange={event => this.handleTitleChange(event)}
               />
             </label>
+            <label>
+              Footer:
+              <input
+                value={footer}
+                onChange={event => this.handleTitleChange(event)}
+              />
+            </label>
           </div>
         </fieldset>
-  
+        <section>
+          <div>
+            <label>
+              Link your image here:
+              <input onChange={event => this.handleImageSrc(event)}/>
+            </label>
+          </div>
+
+          <img src={image}/>
+        </section>
       </main>
     );
-
-
   }
 }
