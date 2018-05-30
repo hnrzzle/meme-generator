@@ -120,7 +120,7 @@ export default class App extends Component {
               style={{ color }}
             >
               <h1 className="meme-header">{header}</h1>
-              {/* <h1 className="meme-footer">{footer}</h1> */}
+              <h1 className="meme-footer">{footer}</h1>
             </div>
             <img className="meme-img" src={image}/>
           </div>
