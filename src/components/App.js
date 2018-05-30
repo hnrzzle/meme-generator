@@ -62,49 +62,49 @@ export default class App extends Component {
           <div className="options">
             <label>
               Header:
-              <input
-                value={header}
-                onChange={event => this.handleHeaderChange(event)}
-              />
             </label>
+            <input
+              value={header}
+              onChange={event => this.handleHeaderChange(event)}
+            />
             <label>
-              Footer:
-              <input
-                value={footer}
-                onChange={event => this.handleHeaderChange(event)}
-              />
+              Footer: 
             </label>
+            <input
+              value={footer}
+              onChange={event => this.handleHeaderChange(event)}
+            />
             <label>
-              Text Color:
-              <input
-                type="color"
-                value={color}
-                onChange={event => this.handleColorChange(event)}
-              />
+              Text Color: 
             </label>
+            <input
+              type="color"
+              value={color}
+              onChange={event => this.handleColorChange(event)}
+            />
             <label>
-              Meme Font:
-              <select value={selected} onChange={event => this.handleFontChange(event)}>
-                {fonts.map(font => <option key={font}>{font}</option>)}
-              </select>
+              Meme Font: 
             </label>
+            <select value={selected} onChange={event => this.handleFontChange(event)}>
+              {fonts.map(font => <option key={font}>{font}</option>)}
+            </select>
           </div>
         </fieldset>
         <section>
           <div>
             <label>
-              Link your image here:
+              Link your image here: 
               <input onChange={event => this.handleImageSrc(event)}/>
             </label>
           </div>
           <div>
             <label>
-              Upload Your Image:
-              <input
-                type="file"
-                onChange={event => this.handleUpload(event)}
-              />
+              Upload Your Image: 
             </label>
+            <input
+              type="file"
+              onChange={event => this.handleUpload(event)}
+            />
           </div>
           <div>
             <button onClick={() => this.handleExport()}>

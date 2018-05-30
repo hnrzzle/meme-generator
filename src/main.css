@@ -3,6 +3,11 @@ body {
   font-family: sans-serif;
 }
 
+
+input {
+  margin: 5px;
+}
+
 .options {
   display: flex;
   justify-content: space-around;
