@@ -10,7 +10,8 @@ export default class App extends Component {
     this.state = {
       title: 'Insert Headline Here',
       footer: 'Insert Footer Here',
-      image: 'https://imgflip.com/s/meme/One-Does-Not-Simply.jpg'
+      image: 'https://imgflip.com/s/meme/One-Does-Not-Simply.jpg',
+      color: '#ffffff'
     };
   }
 
@@ -23,8 +24,28 @@ export default class App extends Component {
     this.setState({ image: target.value });
   }
 
+  handleColorChange({ target }) {
+    this.setState({ color: target.value });
+  }
+
+  handleUpload({ target }) {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(target.files[0]);
+
+    reader.onload = () => {
+      this.setState({ image: reader.result });
+    };
+  }
+
+  handleExport() {
+    dom2image.toBlob(this.imageExport).then(blob => {
+      fileSaver.saveAs(blob, 'meme.png');
+    });
+  }
+
   render() {
-    const { title, image, footer } = this.state;
+    const { title, image, footer, color } = this.state;
 
     return (
       <main>
@@ -45,6 +66,14 @@ export default class App extends Component {
                 onChange={event => this.handleTitleChange(event)}
               />
             </label>
+            <label>
+              Text Color:
+              <input
+                type="color"
+                value={color}
+                onChange={event => this.handleColorChange(event)}
+              />
+            </label>
           </div>
         </fieldset>
         <section>
@@ -54,8 +83,25 @@ export default class App extends Component {
               <input onChange={event => this.handleImageSrc(event)}/>
             </label>
           </div>
-
-          <img src={image}/>
+          <div>
+            <label>
+              Upload Your Image:
+              <input
+                type="file"
+                onChange={event => this.handleUpload(event)}
+              />
+            </label>
+          </div>
+          <div className="image-container"
+            ref={node => this.imageExport = node}
+          >
+            <img src={image}/>
+          </div>
+          <div>
+            <button onClick={() => this.handleExport()}>
+              Save This Meme
+            </button>
+          </div>
         </section>
       </main>
     );
