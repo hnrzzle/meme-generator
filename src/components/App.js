@@ -21,7 +21,10 @@ export default class App extends Component {
 
   handleHeaderChange({ target }) {
     this.setState({ header: target.value });
+  }
 
+  handleFooterChange({ target }) {
+    this.setState({ footer: target.value });
   }
 
   handleImageSrc({ target }) {
@@ -72,7 +75,7 @@ export default class App extends Component {
             </label>
             <input
               value={footer}
-              onChange={event => this.handleHeaderChange(event)}
+              onChange={event => this.handleFooterChange(event)}
             />
             <label>
               Text Color: 
